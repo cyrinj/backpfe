@@ -1,5 +1,5 @@
 const socketStore = require('./socket.store.js');
-let chat = []   //contient des objects { id : xx , messages : [] }
+let chat = []   //contient des objects { id : xx , messages : [] what ?}
 const moment = require('moment-timezone');
 
 const usernames = []
@@ -42,7 +42,7 @@ module.exports = (io) => {
                 }
             }
             //     io.emit('msg', {message,id})
-            io.emit('get', chat)
+            socket.emit('get', chat)
 
 
         });
