@@ -273,33 +273,21 @@ router.post("/testedite", function(req, res) {
  
 
 })
-router.post('/editprofile', (req, res) => {
 
-//router.post('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
-    console.log("ffff",req.body)
-    if (req.body.length > 0) {
-      if (req.body[0].size >= 4000) {
-        
-        console.log("file size limit")
-      } else {
-        
-        console.log("ok")
-      }
-    }
-
-    else{console.log("hhh")}
- /* if (req.body.file==null) {
+router.post('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
+ 
+  if (req.body.file==null) {
    response.badRequest(res, "file format unacepted  ");
   }
   else{
-tripperModule.editprofile(req.user ,req.body.user, req.body.file.name ).then((result) => {
+tripperModule.editprofile(req.user ,req.body.user, req.body.file.filename ).then((result) => {
  
 response.json(res, result) 
 }).catch((err) => {
 response.badRequest(res, err);
 }); 
 
-  }*/
+  }
 })
 
 

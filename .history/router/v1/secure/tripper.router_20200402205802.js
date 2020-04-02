@@ -273,7 +273,7 @@ router.post("/testedite", function(req, res) {
  
 
 })
-router.post('/editprofile', (req, res) => {
+router.get('/editprofile', (req, res) => {
 
 //router.post('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
     console.log("ffff",req.body)

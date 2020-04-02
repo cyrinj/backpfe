@@ -315,7 +315,6 @@ module.exports.editprofile = (token, x) => {
 
 
 module.exports.editprofile = (token,x,filename) => {
-    console.log("filename",filename)
     return new Promise((resolve, reject) => {
         console.log("test edit profile token.id =  "+token.id)
         User.findByIdAndUpdate(token.id,   

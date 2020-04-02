@@ -273,22 +273,10 @@ router.post("/testedite", function(req, res) {
  
 
 })
-router.post('/editprofile', (req, res) => {
 
-//router.post('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
+router.post('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
     console.log("ffff",req.body)
-    if (req.body.length > 0) {
-      if (req.body[0].size >= 4000) {
-        
-        console.log("file size limit")
-      } else {
-        
-        console.log("ok")
-      }
-    }
-
-    else{console.log("hhh")}
- /* if (req.body.file==null) {
+  if (req.body.file==null) {
    response.badRequest(res, "file format unacepted  ");
   }
   else{
@@ -299,7 +287,7 @@ response.json(res, result)
 response.badRequest(res, err);
 }); 
 
-  }*/
+  }
 })
 
 
