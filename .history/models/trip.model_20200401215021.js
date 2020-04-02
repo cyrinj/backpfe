@@ -30,7 +30,6 @@ var tripSchema = new Schema ({
   date_from: Date,
   date_to: Date,
   Days: Array,
-  date_suggestion : Date,
   spotedIn: Number,
   spotedOut: Number,
   price: Number,

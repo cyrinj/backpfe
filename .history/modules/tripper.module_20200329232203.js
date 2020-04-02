@@ -79,7 +79,8 @@ module.exports.updatetrip = (x) => {
             newtrp.agencynumber = x.agencynumber
             newtrp.price = x.price
             newtrp.program = x.program
-            newtrp.draft= x.draft
+
+
 
             trip.findOneAndUpdate({ '_id': newtrp._id }, newtrp, { new: true }).then(dt => {
                 //   console.log("dt result " + dt)
@@ -139,10 +140,8 @@ module.exports.subform = (tokenid, x) => {
         trip1.confirmedByWantotrip = false
         trip1.propositiondeleted = false
         trip1.month = x.month
-        console.log(trip1)
-trip1.draft=x.draft
-trip1.date_suggestion=moment().tz("Africa/Tunisia").format()
-console.log(trip1)
+        // console.log(trip)
+
         let newtrip = new trip(trip1);
         newtrip.save(function (err, trip1) {
             if (err) {
@@ -277,8 +276,9 @@ module.exports.subactivity = (tokenid, x) => {
 }
 
 
-module.exports.editprofile = (token, x) => {
+/*module.exports.editprofile = (token, x) => {
     return new Promise((resolve, reject) => {
+        console.log("test edit profile token.id =  " + token.id)
         User.findByIdAndUpdate(token.id,
             {
                 $set: {
@@ -296,24 +296,24 @@ module.exports.editprofile = (token, x) => {
                     date_naissance: x.date_naissance
                 }
             }, { new: true }).then(user => {
-               
+                console.log("test edit profile !!! " + user)
                 resolve(user)
 
 
 
 
             }).catch(err => {
-              
+                console.log(' edit profile err ', err)
                 reject(err);
             });
 
 
     })
 
-}
+}*/
 
 
-/*
+
 module.exports.editprofile = (token,x,filename) => {
     return new Promise((resolve, reject) => {
         console.log("test edit profile token.id =  "+token.id)
@@ -351,7 +351,7 @@ module.exports.editprofile = (token,x,filename) => {
 
 }
 
-*/
+
 
 
 module.exports.changepassword_in = (token, x) => {
@@ -411,7 +411,7 @@ module.exports.allmessagesbyuser = (id) => {
 module.exports.alltripsbyuser = (id) => {
     return new Promise((resolve, reject) => {
 
-        trip.find({ owner: id, propositiondeleted: false , draft:false}).then(data => {
+        trip.find({ owner: id, propositiondeleted: false }).then(data => {
             if (data !== null && data.length && data.length > 0) {
                 resolve(data)
             }
@@ -429,25 +429,6 @@ module.exports.alltripsbyuser = (id) => {
 
     })
 }
-
-module.exports.alltripdraftsbyuser = (id) => {
-    return new Promise((resolve, reject) => {
-
-        trip.find({ owner: id, propositiondeleted: false, draft:true}).then(data => {
-            if (data !== null && data.length && data.length > 0) {
-                resolve(data)
-            }
-            else {
-                reject("no trips found")
-            }
-        })
-            .catch(err => {
-                console.log(' getting trips du user error ', err)
-                reject(err);
-            })
-      })
-}
-
 
 
 module.exports.getInfoFromToken = (token) => {

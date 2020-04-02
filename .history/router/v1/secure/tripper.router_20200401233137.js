@@ -253,13 +253,14 @@ router.post('/changepassword_in', authenticateToken, (req, res) => {
 })
 
 
-router.post('/editprofile', authenticateToken, (req, res) => {
+/*router.post('/editprofile', authenticateToken, (req, res) => {
 
   console.log("token dans editprofile \n" + req.user)
   console.log("token dans editprofile \n" + JSON.stringify(req.body))
 
   tripperModule.editprofile(req.user, req.body).then((result) => {
-   
+    console.log("--------v" + req.body)
+    console.log("----++++  " + req.user)
 
     response.json(res, result)
 
@@ -267,28 +268,33 @@ router.post('/editprofile', authenticateToken, (req, res) => {
   }).catch((err) => {
     response.badRequest(res, err);
   });
-})
-/*
-router.post("/testedit", function(req, res) {
-  console.log(req.body)
+
+
 
 })*/
 
-/*router.get('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
- console.log("myreq")
+
+router.get('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
+ 
   if (req.file==null) {
    response.badRequest(res, "file format unacepted  ");
+
   }
   else{
 tripperModule.editprofile(req.user ,req.body, req.file.filename ).then((result) => {
  
+
 response.json(res, result) 
+
+
+
 }).catch((err) => {
 response.badRequest(res, err);
 }); 
 
   }
-})*/
+
+})
 
 
 

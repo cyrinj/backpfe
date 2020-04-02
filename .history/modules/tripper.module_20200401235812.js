@@ -277,8 +277,9 @@ module.exports.subactivity = (tokenid, x) => {
 }
 
 
-module.exports.editprofile = (token, x) => {
+/*module.exports.editprofile = (token, x) => {
     return new Promise((resolve, reject) => {
+        console.log("test edit profile token.id =  " + token.id)
         User.findByIdAndUpdate(token.id,
             {
                 $set: {
@@ -296,24 +297,24 @@ module.exports.editprofile = (token, x) => {
                     date_naissance: x.date_naissance
                 }
             }, { new: true }).then(user => {
-               
+                console.log("test edit profile !!! " + user)
                 resolve(user)
 
 
 
 
             }).catch(err => {
-              
+                console.log(' edit profile err ', err)
                 reject(err);
             });
 
 
     })
 
-}
+}*/
 
 
-/*
+
 module.exports.editprofile = (token,x,filename) => {
     return new Promise((resolve, reject) => {
         console.log("test edit profile token.id =  "+token.id)
@@ -351,7 +352,7 @@ module.exports.editprofile = (token,x,filename) => {
 
 }
 
-*/
+
 
 
 module.exports.changepassword_in = (token, x) => {
