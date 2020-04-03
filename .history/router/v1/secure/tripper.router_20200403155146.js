@@ -315,7 +315,6 @@ function imageUpload(req, res) {
             var writepath = "./rsc/uploads/" + id +"/"
             let nameFile = file.originalname.replace(' ', '_')
             var urlBD = "http://localhost:3000/uploads/" + id + "/" + nameFile
-         
             tripperModule.editphoto_de_profil(id, urlBD).then((result) => {
    
 
@@ -325,6 +324,7 @@ function imageUpload(req, res) {
             }).catch((err) => {
               response.badRequest(res, err);
             });
+          
             fs.writeFile(writepath + nameFile, data, (err) => {
               if (err) {} else {
                 callback(null, 'done');
@@ -337,8 +337,7 @@ function imageUpload(req, res) {
       }, function (err) {
         if (err) {} else {
           cmd.run('rm -rf ./Backend/*');
-         // response.json(res, "files printed successfully")
-          
+          response.json(res, "files printed successfully")
         }
       });
     }
