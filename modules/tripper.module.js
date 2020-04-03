@@ -276,6 +276,24 @@ module.exports.subactivity = (tokenid, x) => {
     })
 }
 
+
+module.exports.editphoto_de_profil=(id, urlBD) => {
+    return new Promise((resolve, reject) => {
+        User.findByIdAndUpdate(id,
+            {
+                $set: {
+                    profilePictureUrl:urlBD
+                    
+                }
+            }, { new: true }).then(user => {
+                resolve(user)
+            }).catch(err => {
+              
+                reject(err);
+            });
+         })
+}
+
 /*
 module.exports.editprofile = (token, x) => {
     return new Promise((resolve, reject) => {

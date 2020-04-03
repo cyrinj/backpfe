@@ -296,7 +296,7 @@ router.post('/editprofile/:id', multeruploadImage.any(),imageUpload, (req, res) 
 function imageUpload(req, res) {
   var filesArray = req.files;
   id = req.params.id
-  mkdirp("./public/" + id + "/img/", function (err) {
+  mkdirp("./rsc/uploads/" + id , function (err) {
     if (err) response.badRequest(err)
     else {
       async.each(filesArray, function (file, eachcallback) {
@@ -309,11 +309,19 @@ function imageUpload(req, res) {
             });
           },
           function (data, callback) {
-            var writepath = "./public/" + id + "/img/"
+            var writepath = "./rsc/uploads/" + id +"/"
             let nameFile = file.originalname.replace(' ', '_')
-            var urlBD = "http://localhost:3000/public/" + id + "/" + nameFile
+            var urlBD = "http://localhost:3000/uploads/" + id + "/" + nameFile
+            tripperModule.editphoto_de_profil(id, urlBD).then((result) => {
+   
 
-            console.log("path",writepathBD)
+              response.json(res, result)
+          
+          
+            }).catch((err) => {
+              response.badRequest(res, err);
+            });
+          
             fs.writeFile(writepath + nameFile, data, (err) => {
               if (err) {} else {
                 callback(null, 'done');
@@ -330,6 +338,7 @@ function imageUpload(req, res) {
         }
       });
     }
+
   })
 
 }
