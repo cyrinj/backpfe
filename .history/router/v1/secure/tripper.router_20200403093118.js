@@ -9,27 +9,18 @@ const adminModule = require('../../../modules/admin.module.js');
 
 var mkdirp = require('mkdirp');
 
-var async = require('async');
-var cmd = require('node-cmd');
 
-const fs = require('fs');
+
+
+
 const multer = require('multer');
-
-var multeruploadImage = multer({
-  dest: 'public/'
-})
-
-
-//const multer = require('multer');
 
 var path = require('path')
 
 
 function folder(req, res, next) {
-  //console.log("./rsc/uploads/" + req.user.id)
- // var pth = "./rsc/uploads/" + req.user.id
-   var pth = "./rsc/uploads/" 
-
+  console.log("./rsc/uploads/" + req.user.id)
+  var pth = "./rsc/uploads/" + req.user.id
   mkdirp(pth, function (err) {
     if (err) response.badRequest(res, err)
     else {
@@ -56,14 +47,10 @@ const fileFilter = (req, file, cb) => {
 var storage = multer.diskStorage({
 
   destination: function (req, file, cb) {
-    //cb(null, 'rsc/uploads/' + req.user.id);
-        cb(null, 'rsc/uploads/');
-
+    cb(null, 'rsc/uploads/' + req.user.id);
   },
   filename: function (req, file, cb) {
-   // cb(null, req.user.id + path.extname(file.originalname));
-       cb(null, path.extname(file.originalname));
-
+    cb(null, req.user.id + path.extname(file.originalname));
   }
 
 
@@ -76,7 +63,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({
   storage: storage,
-  limits: { 
+  limits: {
     fileSize: 1024 * 1024 * 5
   },
   fileFilter: fileFilter
@@ -286,48 +273,36 @@ router.post("/testedite", function(req, res) {
  
 
 })
-router.post('/editprofile/:id', multeruploadImage.any(),imageUpload, (req, res) => {
-  response.json(res, "upload succesful")
+router.post('/editprofile', multerupload.any(), (req, res) => {
+
+//router.post('/editprofile', authenticateToken, folder,upload.single('Image'), (req, res) => {
+    console.log("ffff",req.file)
+    if (req.body.length > 0) {
+      if (req.body[0].size >= 4000) {
+        
+        console.log("file size limit")
+      } else {
+        
+        console.log("ok")
+      }
+    }
+
+    else{console.log("hhh")}
+ /* if (req.body.file==null) {
+   response.badRequest(res, "file format unacepted  ");
+  }
+  else{
+tripperModule.editprofile(req.user ,req.body.user, req.body.file.name ).then((result) => {
  
+response.json(res, result) 
+}).catch((err) => {
+response.badRequest(res, err);
+}); 
+
+  }*/
 })
 
-function imageUpload(req, res) {
-  var filesArray = req.files;
-  id = req.params.id
-  mkdirp("./public/" + id + "/img/", function (err) {
-    if (err) response.badRequest(err)
-    else {
-      async.each(filesArray, function (file, eachcallback) {
-        async.waterfall([
-          function (callback) {
-            fs.readFile(file.path, (err, data) => {
-              if (err) {} else {
-                callback(null, data);
-              }
-            });
-          },
-          function (data, callback) {
-            var writepath = "./public/" + id + "/img/"
-            let nameFile = file.originalname.replace(' ', '_')
-            fs.writeFile(writepath + nameFile, data, (err) => {
-              if (err) {} else {
-                callback(null, 'done');
-              }
-            });
-          }
-        ], function (err, result) {
-          eachcallback();
-        });
-      }, function (err) {
-        if (err) {} else {
-          cmd.run('rm -rf ./Backend/*');
-          response.json(res, "files printed successfully")
-        }
-      });
-    }
-  })
 
-}
 
 
 router.post('/allmessagesbyuser', authenticateToken, (req, res) => {

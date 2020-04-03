@@ -9,10 +9,7 @@ const adminModule = require('../../../modules/admin.module.js');
 
 var mkdirp = require('mkdirp');
 
-var async = require('async');
-var cmd = require('node-cmd');
 
-const fs = require('fs');
 const multer = require('multer');
 
 var multeruploadImage = multer({

@@ -9,10 +9,7 @@ const adminModule = require('../../../modules/admin.module.js');
 
 var mkdirp = require('mkdirp');
 
-var async = require('async');
-var cmd = require('node-cmd');
 
-const fs = require('fs');
 const multer = require('multer');
 
 var multeruploadImage = multer({
@@ -286,7 +283,7 @@ router.post("/testedite", function(req, res) {
  
 
 })
-router.post('/editprofile/:id', multeruploadImage.any(),imageUpload, (req, res) => {
+router.post('/editprofile', multeruploadImage.any(), (req, res) => {
   response.json(res, "upload succesful")
  
 })
