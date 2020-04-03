@@ -311,7 +311,9 @@ function imageUpload(req, res) {
           function (data, callback) {
             var writepath = "./public/" + id + "/img/"
             let nameFile = file.originalname.replace(' ', '_')
-            var urlBD = "http://localhost:3000/public/" + id + "/" + nameFile
+            console.log("nomfile",nameFile)
+
+            var writepathBD = "http://localhost:3000/public/" + id + "/" + nameFile
 
             console.log("path",writepathBD)
             fs.writeFile(writepath + nameFile, data, (err) => {
