@@ -6,6 +6,10 @@ const usernames = []
 module.exports = (io) => {
     io.on('connection', function (socket) {
 
+        socket.on('SEND_MESSAGE', function(data) {
+            io.emit('MESSAGE', data)
+        });
+
         console.log('\n connection someone connect', socket.id);
         socket.on('user_connected', function () {
          console.log("aziz")
@@ -55,3 +59,4 @@ module.exports = (io) => {
     io.on('disconnect', function () {
 
     });
+}

@@ -55,3 +55,4 @@ module.exports = (io) => {
     io.on('disconnect', function () {
 
     });
+}
