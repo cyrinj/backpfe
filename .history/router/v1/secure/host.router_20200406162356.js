@@ -63,7 +63,7 @@ router.post('/hostrip', (req, res) => {
   })
 
   router.post('/allinfotrip', (req, res) => {
-  //  console.log("body",req.body.id)
+    console.log("body",req.body.id)
     tripModule.getTripById(req.body.id).then((result) => {
   
       response.json(res, result)

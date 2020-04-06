@@ -44,11 +44,10 @@ module.exports.getAllTrips = () => {
 
 module.exports.getTripById = ( id ) => {
   return new Promise((resolve, reject) => {
-   // console.log("hhhh",id)
-    Trip.find({_id: id}).then(data => {
+    console.log("hhhh",id)
+    Trip.findOne({_id: id}).then(data => {
       if(data && data.length && data.length > 0) {
         resolve(data)
-        console.log("mytrip",data)
       }else {
         resolve('trip not found')
       }
