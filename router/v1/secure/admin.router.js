@@ -28,3 +28,6 @@ router.post('/allmessagesbyadmin', (req, res) => {
     });
   })
   
+
+
+module.exports = router;
