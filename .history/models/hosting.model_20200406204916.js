@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 
 var hostSchema = new Schema({
 trip : { title : String},
-tripid:String,
 hostid:String,
 //email:String ,      id user
 //date_depart: Date , date d envois
@@ -18,8 +17,7 @@ workshop: {
 max_eff:Number,  //control de saisit front
 special_request:String,
 motivation :String , 
-status: String ,
-date_denvois: String
+status: String 
 
 })
 
