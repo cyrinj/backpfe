@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 
 var hostSchema = new Schema({
-    tripid:String,
 
+ 
 hostid:String,
 email:String ,
 date_depart: Date ,

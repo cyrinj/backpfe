@@ -14,8 +14,14 @@ var cmd = require('node-cmd');
 
 //date format YYYY-MM-DD HH:mm:ss
 router.post('/hostrip', (req, res) => {
+
+
     hostModule.tohost(req.body).then((result) => {
+  
+  
       response.json(res, result)
+  
+  
     }).catch((err) => {
         response.badRequest(res, err);
       });
@@ -23,13 +29,28 @@ router.post('/hostrip', (req, res) => {
 
   router.post('/update', (req, res) => {
     hostModule.update(req.body).then((result) => {
+  
       response.json(res, result)
     }).catch((err) => {
         console.log(err)
         response.badRequest(res, err);
       });
- })
 
+  })
+
+  router.post('/hostrip', (req, res) => {
+
+
+    hostModule.tohost(req.body).then((result) => {
+  
+  
+      response.json(res, result)
+  
+  
+    }).catch((err) => {
+        response.badRequest(res, err);
+      });
+  })
 
   router.post('/delete', (req, res) => {
     hostModule.delete(req.body).then((result) => {
@@ -42,16 +63,16 @@ router.post('/hostrip', (req, res) => {
 
   })
   router.post('/allhostedBY', (req, res) => {
-    hostModule.allby(req.body._id).then((result) => {
-     response.json(res, result)
+    hostModule.allby(req.body.hostid).then((result) => {
+  
+      response.json(res, result)
     }).catch((err) => {
         console.log(err)
         response.badRequest(res, err);
       });
 
   })
-  router.get('/allhosted', (req, res) => {
-    console.log("hhhhhhhh")
+  router.post('/allhosted', (req, res) => {
     hostModule.all().then((result) => {
   
       response.json(res, result)

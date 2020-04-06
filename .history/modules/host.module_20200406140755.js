@@ -42,7 +42,6 @@ module.exports.tohost = (demande) => {
   }
   module.exports.allby = (id) => {
     return new Promise((resolve, reject) => {
-      console.log("test id : ", id)
       host.find({hostid:id}).then(data => {
         if(data && data.length && data.length > 0) {
           resolve(data)

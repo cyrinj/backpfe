@@ -42,8 +42,9 @@ router.post('/hostrip', (req, res) => {
 
   })
   router.post('/allhostedBY', (req, res) => {
-    hostModule.allby(req.body._id).then((result) => {
-     response.json(res, result)
+    hostModule.allby(req.body.hostid).then((result) => {
+  
+      response.json(res, result)
     }).catch((err) => {
         console.log(err)
         response.badRequest(res, err);
@@ -51,7 +52,6 @@ router.post('/hostrip', (req, res) => {
 
   })
   router.get('/allhosted', (req, res) => {
-    console.log("hhhhhhhh")
     hostModule.all().then((result) => {
   
       response.json(res, result)
