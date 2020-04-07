@@ -42,7 +42,6 @@ module.exports.tohost = (demande) => {
   }
   module.exports.allby = (id) => {
     return new Promise((resolve, reject) => {
-      //console.log("test id : ", id)
       host.find({hostid:id}).then(data => {
         if(data && data.length && data.length > 0) {
           resolve(data)
@@ -66,24 +65,3 @@ module.exports.tohost = (demande) => {
     
   }
   
-  module.exports.AllTripsAcceptedForBlogger = () => {
-    return new Promise((resolve, reject) => {
-
-        trip.find({status:"accepted"}).then(data => {
-            if (data !== null && data.length && data.length > 0) {
-                resolve(data)
-            }
-            else {
-                reject("no trips found")
-            }
-
-
-
-        })
-            .catch(err => {
-                console.log(' getting trips du user error ', err)
-                reject(err);
-            })
-
-    })
-}

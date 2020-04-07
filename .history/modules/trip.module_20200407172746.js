@@ -44,7 +44,7 @@ module.exports.getAllTrips = () => {
 
 module.exports.getTripById = ( id ) => {
   return new Promise((resolve, reject) => {
-    Trip.find({_id: id}).then(data => {
+    Trip.findOne({_id: id}).then(data => {
       if(data && data.length && data.length > 0) {
         resolve(data)
       }else {
