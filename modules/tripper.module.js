@@ -332,6 +332,7 @@ module.exports.editprofile = (token, x) => {
 
 
 
+
 module.exports.editprofile = (token,x,filename) => {
     console.log("filename",filename)
     return new Promise((resolve, reject) => {
@@ -370,7 +371,51 @@ module.exports.editprofile = (token,x,filename) => {
 
 }
 
-
+module.exports.editprofileAG = (token,x,filename) => {
+    console.log("filename",filename)
+    return new Promise((resolve, reject) => {
+        console.log("test edit profile token.id =  "+token.id)
+        User.findByIdAndUpdate(token.id,   
+            {
+                $set: {
+                    
+                    profilePictureUrl:"http://localhost:3000/uploads/"+token.id+"/"+filename, 
+                     
+                        email: x. email,
+                         
+                        adresse: x.adresse,
+                        code_postal: x.   code_postal,
+                        ville: x. ville,
+                        gouvernement: x.gouvernement,
+                        pays: x. pays,
+                        telephone: x. telephone,
+                        // agence ou local guide
+                        status:x.status, 
+                        Agency_name: x.Agency_name,
+                      
+                            website:x.website,
+                            tripadvisor: x.tripadvisor,
+                        
+                         
+                        //countries the agency activity reach
+                        reach:x.reach , 
+                        experience_SINCE: x.experience_SINCE
+                        
+                } }, { new: true }).then(user => {
+                console.log("test edit profile !!! "+ user)
+                resolve(user)
+  
+  
+  
+  
+    }) .catch(err => {
+        console.log(' edit profile err ', err)
+        reject(err);
+    });
+  
+  
+  })}
+  
 
 
 module.exports.changepassword_in = (token, x) => {

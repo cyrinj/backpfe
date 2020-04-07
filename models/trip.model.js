@@ -61,8 +61,10 @@ var tripSchema = new Schema ({
       last_name: String,
       username: String,
       pictureUrl: String
-    }
+    },
   ],
+  max:Number ,
+  min: Number
 });
 
 

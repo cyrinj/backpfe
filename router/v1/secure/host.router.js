@@ -38,19 +38,7 @@ router.post('/hostrip', (req, res) => {
 
   })
 
-  router.post('/hostrip', (req, res) => {
-
-
-    hostModule.tohost(req.body).then((result) => {
   
-  
-      response.json(res, result)
-  
-  
-    }).catch((err) => {
-        response.badRequest(res, err);
-      });
-  })
 
   router.post('/delete', (req, res) => {
     hostModule.delete(req.body).then((result) => {
@@ -63,7 +51,7 @@ router.post('/hostrip', (req, res) => {
 
   })
   router.post('/allhostedBY', (req, res) => {
-    hostModule.allby(req.body.hostid).then((result) => {
+    hostModule.allby(req.body._id).then((result) => {
   
       response.json(res, result)
     }).catch((err) => {

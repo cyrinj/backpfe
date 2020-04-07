@@ -1,5 +1,5 @@
 const User = require('../models/user.model.js')
-const chatx = require('../models/chat.model.js')
+ const chatx = require('../models/chat.model.js')
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -77,7 +77,7 @@ module.exports.login = (email, password) => {
        
         User.find({ email: email })
             .then(data => {
-                if (data !== null && data.length && data.length > 0) {
+                if (data !== null && data.length && data.length > 0 && data.activated==true  ) {
                     if (bcrypt.compareSync(password, data[0].password)) {
                         let payload = {
                             email: data[0].email,
@@ -158,9 +158,7 @@ module.exports.Activate = ( accessToken) => {
 
 
 }
-
-
-
+ 
 
 
 
@@ -168,45 +166,64 @@ module.exports.Activate = ( accessToken) => {
 
 module.exports.register  = (user) => {
     return new Promise((resolve, reject) => {
+        const user0={}
         User.find({ email: user.email }).then(data => {
             console.log('~######################################## test user ~########################################\n')
             if (data && data.length && data.length > 0) {
                 reject("This Email Is Already Taken");
             } else {
+                user0.email=user.email
                 let salt = bcrypt.genSaltSync(10);
                 let hash = bcrypt.hashSync(user.password, salt);
                 let profilePictureUrl = "https://cdn3.iconfinder.com/data/icons/gray-user-toolbar/512/manager-512.png"
-                user.password = hash;
-                user.salt = salt;
-                user.username=user.username
-                user.isConnected = false;
-                user.profilePictureUrl = profilePictureUrl;
-                user.createdAt = moment().tz("Africa/Tunisia").format();
-                user.last_signIn = moment().tz("Africa/Tunisia").format();
-                user.updatedAt = moment().tz("Africa/Tunisia").format();
-                user.activated = false
-                user.adresse = ""
-                user.code_postal = ""
-                user.ville = ""
-                user.gouvernement = ""
-                user.pays = ""
-                user.backupemail =user.backupemail
-                user.securityquestion=user.securityquestion
-                user.response=user.response
-                user.note = {}
-                user.date_naissance = null
-                user.type_account = ""
-                user.profilePictureUrl = profilePictureUrl
-                user.vapoint = user.vapoint
+                user0.password = hash;
+                user0.salt = salt;
+                user0.username=user.username;
+                user0.isConnected = false;
+                user0.profilePictureUrl = profilePictureUrl;
+                user0.createdAt = moment().tz("Africa/Tunisia").format();
+                user0.last_signIn = moment().tz("Africa/Tunisia").format();
+                user0.updatedAt = moment().tz("Africa/Tunisia").format();
+                user0.activated = false
+                user0.adresse = ""
+                user0.code_postal = ""
+                user0.ville = ""
+                user0.gouvernement = ""
+                user0.pays = ""
+                user0.backupemail =user.backupemail
+                user0.securityquestion=user.securityquestion
+                user0.response=user.response
+                user0.note = {}
+                user0.date_naissance = null
+                user0.type_account = ""
+                user0.profilePictureUrl = profilePictureUrl
+                user0.vapoint = user.vapoint
+                //local guide ou agency
+                user0.status =user.status 
+                user0.Agency_name=  user.Agency_name
+                user0.website= user.website,
+                user0.facebook =  user.facebook  ,
+                user0.tripadvisor=  user.tripadvisor,
+                // reach : countries operating in
+                user0.reach= user.reach,
+                user0.experience_SINCE = user.experience_SINCE,
+                user0.accepted= false
+                user0.role=user.role 
+
+
+
+
+
                /* let payload = {
                     email: user.email,
                     password: user.password
                 }
                 let token = jwt.sign(payload, process.env.JWT);
 
- */
+ */                 
                 
-                let newuser = new User(user);
+                let newuser = new User(user0);
+                console.log("new user"+ newuser)
                 newuser.save(function(err, user) {
                     if (err) {
                         reject(err);
