@@ -123,6 +123,6 @@ const v1Router = require('./router/v1/v1.router.js')
 app.use('/api', v1Router)
 
 server.listen(port, () => {
-    console.log("listing to port : ${port}") 
+    Console. Log("listing to port : ${port}") 
    })
 
