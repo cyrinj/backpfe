@@ -20,7 +20,7 @@ special_request:String,
 motivation :String , 
 status: String ,
 date_denvois: String,
-last_update:String
+last_upadate:String
 
 })
 
