@@ -22,7 +22,7 @@ app.use(express.static('rsc'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
-app.use( express.static( path.join(__dirname, "./dist") ) );
+
 http = require('http')
 var server = http.createServer(app);
 

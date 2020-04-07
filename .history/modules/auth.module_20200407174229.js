@@ -77,7 +77,7 @@ module.exports.login = (email, password) => {
        
         User.find({ email: email })
             .then(data => {
-                if (data !== null && data.length && data.length >0  ) {
+                if (data !== null && data.length && data.length >  ) {
                     if (bcrypt.compareSync(password, data[0].password)) {
                         let payload = {
                             email: data[0].email,
