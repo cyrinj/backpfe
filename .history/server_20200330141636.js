@@ -13,8 +13,6 @@ const port = process.env.PORT;
 const MongoClient = require('mongodb').MongoClient;
 response.setProvider("wantotrip")
 
-
-const history = require('connect-history-api-fallback');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static('rsc'))
@@ -24,9 +22,6 @@ app.use(express.static('rsc'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
-app.use(history());
-
-app.use( express.static( path.join(__dirname, "./dist") ) );
 
 http = require('http')
 var server = http.createServer(app);

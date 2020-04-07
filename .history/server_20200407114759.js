@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(history());
 
-app.use( express.static( path.join(__dirname, "./dist") ) );
+app.use( express.static( path.join(__dirname, "../frontpfe/dist") ) );
 
 http = require('http')
 var server = http.createServer(app);
