@@ -54,8 +54,8 @@ router.post('/deleteoffer', (req, res) => {
 
   })
   router.post('/update', (req, res) => {
-   
-    agencyModule.update(req.body).then((result) => {
+    console.log("hey",req.body)
+    agencytModule.update(req.body).then((result) => {
   
       response.json(res, result)
     }).catch((err) => {

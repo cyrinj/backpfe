@@ -22,6 +22,7 @@ router.post('/makeOFFER', (req, res) => {
 
 })
 router.post('/agencyoffers', (req, res) => {
+  console.log("myyyyagency",req.body)
   agencyModule.agencyoffers(req.body).then((result) => {
 
     response.json(res, result)
@@ -54,8 +55,7 @@ router.post('/deleteoffer', (req, res) => {
 
   })
   router.post('/update', (req, res) => {
-   
-    agencyModule.update(req.body).then((result) => {
+    agencytModule.update(req.body).then((result) => {
   
       response.json(res, result)
     }).catch((err) => {

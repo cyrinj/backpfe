@@ -2,7 +2,6 @@ const User = require('../models/user.model.js')
 const trip = require('../models/trip.model.js')
 const chatx = require('../models/chat.model.js')
 const host = require('../models/hosting.model.js')
-const agencyy = require('../models/agencyhosting.model.js')
 const  agenceoffer = require('../models/agencyhosting.model.js')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -74,12 +73,11 @@ module.exports.makeOFFER = (offer) => {
 
 
 module.exports.agencyoffers = (agency) => {
-
   return new Promise((resolve, reject) => {
    agenceoffer.find({hostid: agency._id}).then(data => {
           if(data && data.length && data.length > 0) {
             resolve(data)
-            
+            console.log('my offer',data)
           }else {
             resolve('not offer found')
           }
@@ -124,7 +122,7 @@ module.exports.deleteoffer = (offer) => {
             module.exports.update = (agency) => {
                 return new Promise((resolve, reject) => {
                 
-                  agencyy.findOneAndUpdate({_id: agency._id}, agency, { new: true }).then(dt => {
+                  User.findOneAndUpdate({_id: agency._id}, agency, { new: true }).then(dt => {
                       
                     resolve(dt)
               

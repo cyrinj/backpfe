@@ -9,8 +9,7 @@ hostid:String,
 note:String,
 trip:{title:String},
 date_denvois: String,
-last_update :String,
-status : String
+last_update :String
 })
 
 

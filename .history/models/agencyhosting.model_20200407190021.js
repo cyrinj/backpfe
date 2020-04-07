@@ -4,13 +4,12 @@ var Schema = mongoose.Schema;
 
 var agencySchema = new Schema({
 
-tripid: String,
-hostid:String,
+tripid:{type:  Schema.Types.ObjectId, ref:'Trip'},
+hostid:{type:  Schema.Types.ObjectId, ref:'users'},
 note:String,
 trip:{title:String},
 date_denvois: String,
-last_update :String,
-status : String
+date_update :String
 })
 
 
