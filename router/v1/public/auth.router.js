@@ -152,7 +152,7 @@ function authenticateToken(req, res, next){
 });
 
 
-
+var role
 
 router.post('/register', (req, res) => {
   //  console.log('register user router', req.body)
@@ -161,7 +161,7 @@ router.post('/register', (req, res) => {
     let pass = req.body.password
     authModule.register(req.body).then((data) => {
        
-     //   console.log('############ user register::  ############\n',data  )
+    console.log('############ user register::  ############\n',data  )
      //   console.log('############ password::  ############\n', pass)
 
         let payload = {
@@ -171,11 +171,10 @@ router.post('/register', (req, res) => {
 
         }
          accessToken = jwt.sign(payload, process.env.JWT);
+        role =data.role
 
-
-
-
-        validate (req,res ,data.email ,  accessToken)
+ 
+        validate (req,res ,data.email ,  accessToken, role)
      }).catch((err) => {
         console.log(err);
         if (err === "This Email Is Already Taken") {
@@ -185,20 +184,60 @@ router.post('/register', (req, res) => {
         }
     });
 });
+ 
+
+ 
 
 
 
 
-function validate (req,res,mail,accessToken){
+
+
+function validate (req,res,mail,accessToken,role0){
     console.log("------------------------------------------------------")
     console.log("validate token test "+accessToken)
     host=req.get('host');
     link="http://"+req.get('host')+"/api/v1/auth/verify?id="+accessToken;
+    if (role0=="agency"){
+    mailOptions={
+        to : mail,
+        subject : " Wantotrip agency  account",
+      
+        html : "Hello,<br> your registration request for Wantotrip agency  account is being processed. <br> " 
+    }}
+     else if (role0=="tripper"){
     mailOptions={
         to : mail,
         subject : "Please confirm your Email account",
-        html : "Hello,<br> Please Click on the link to validate your account .<br><a href="+link+">Click here to verify</a>"
-    }
+      
+        html : "Hello,<br>Please Click on the link to validate your account. <br><a href="+link+">Click here to verify</a>"
+    }}
+    else if (role0=="blogger"){
+        mailOptions={
+            to : mail,
+            subject : "Wantotrip blogger account",
+          
+            html : "Hello,<br> your registration request for Wantotrip agency  account is being processed click here to login to your temporary account. <br><a href="+link+">Click here to verify</a>"
+        }}
+    else if (role0=="admin"){
+        mailOptions={
+            to : mail,
+            subject : " Admin account",
+          
+            html : "Hello,<br>Please Click on the link to validate your account. <br><a href="+link+">Click here to verify</a>"
+        }}
+        else{
+            console.log("probleme dans le role iconnu ")
+        }
+
+    
+
+
+
+
+
+
+
    // console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
      if(error){

@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 
 var hostSchema = new Schema({
 
- 
-hostid:String,
+tripid:{type:  Schema.Types.ObjectId, ref:'Trip'},
+hostid:{type:  Schema.Types.ObjectId, ref:'users'},
 email:String ,
 date_depart: Date ,
 host_nbr: Number ,

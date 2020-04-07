@@ -28,7 +28,25 @@ var userSchema = new Schema({
     updatedAt: Date,
     linkedAccount: [],
     notification: [],
-    note: {}
+    note: {},
+    //AGENCE ou LOCAL guide
+    status:String ,  
+    Agency_name: String ,
+    URL:{
+        website:String ,
+        facebook :String,
+        tripadvisor: String
+    },
+   
+    //countries the agency activity reach
+    reach: [],
+    experience_SINCE: Date, 
+    
+
+
+
+
+
 })
 
 var User = mongoose.model('User', userSchema);
