@@ -40,7 +40,18 @@ var userSchema = new Schema({
    
     //countries the agency activity reach
     reach: [],
-    experience_SINCE: Date, 
+    experience_SINCE: Date,
+    // blogger profile theme du contenu , ùotivation to join wantotrip 
+    theme:String ,
+    socialMedia :{
+        facebook :String,
+        youtube:String ,
+        instagram:String
+
+    }
+    ,
+    motivation:String ,  
+
     
 
 
