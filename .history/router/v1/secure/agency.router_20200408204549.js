@@ -89,17 +89,7 @@ router.post('/deleteoffer', (req, res) => {
   })
 
 
-  router.post('/editprofileagency', (req, res) => {
-   console.log("req.body",req.body)
-    agencyModule.updateprofil(req.body).then((result) => {
-     
-    response.json(res, result)
-  
-  
-    }).catch((err) => {
-      response.badRequest(res, err);
-    });
-  })
+ 
 
 
 

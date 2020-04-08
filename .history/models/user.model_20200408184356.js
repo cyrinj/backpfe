@@ -6,6 +6,7 @@ var userSchema = new Schema({
     first_name: String,
     last_name: String,
     email: String,
+    number : Number,
     backupemail: String,
     password: String,
     adresse: String,
@@ -32,10 +33,11 @@ var userSchema = new Schema({
     //AGENCE ou LOCAL guide
     status:String ,  
     Agency_name: String ,
+    URL:{
         website:String ,
         facebook :String,
-        tripadvisor: String,
-    
+        tripadvisor: String
+    },
    
     //countries the agency activity reach
     reach: [],

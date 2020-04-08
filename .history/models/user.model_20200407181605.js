@@ -32,10 +32,11 @@ var userSchema = new Schema({
     //AGENCE ou LOCAL guide
     status:String ,  
     Agency_name: String ,
+    URL:{
         website:String ,
         facebook :String,
-        tripadvisor: String,
-    
+        tripadvisor: String
+    },
    
     //countries the agency activity reach
     reach: [],

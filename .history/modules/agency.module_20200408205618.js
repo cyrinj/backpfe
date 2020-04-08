@@ -14,7 +14,7 @@ module.exports.updateprofil = (agency) => {
   return new Promise((resolve, reject) => {
   
     User.findOneAndUpdate({_id: agency._id}, agency, { new: true }).then(dt => {
-        console.log("new",dt)
+        
       resolve(dt)
 
   }) .catch((err) => {

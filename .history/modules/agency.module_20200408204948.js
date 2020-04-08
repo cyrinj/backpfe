@@ -13,8 +13,8 @@ const moment = require('moment-timezone')
 module.exports.updateprofil = (agency) => {
   return new Promise((resolve, reject) => {
   
-    User.findOneAndUpdate({_id: agency._id}, agency, { new: true }).then(dt => {
-        console.log("new",dt)
+    agencyy.findOneAndUpdate({_id: agency._id}, agency, { new: true }).then(dt => {
+        
       resolve(dt)
 
   }) .catch((err) => {
