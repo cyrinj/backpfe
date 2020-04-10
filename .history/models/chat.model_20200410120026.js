@@ -5,7 +5,8 @@ var chatSchema = new Schema ({
   messages: [],
   // id
   owner:String,
- 
+  //name
+  name: String,
 
   });
 

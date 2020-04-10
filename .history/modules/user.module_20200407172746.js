@@ -133,25 +133,3 @@ module.exports.getUserById = (id) => {
         })
     })
 }
-
-module.exports.allusersforadmin = () => {
-
-    return new Promise((resolve, reject) => {
-        User.find({role: "tripper"}).then(data => {
-            //  chatx.find({ owner: id }).then(data => {
-            if (data !== null) {
-                resolve(data)
-                
-            }
-            else {
-              //  console.log("hhh")
-                reject("no chat found")
-            }
-        })
-            .catch(err => {
-                console.log(' getting chats by admin error ', err)
-                reject(err);
-            })
-
-    })
-}

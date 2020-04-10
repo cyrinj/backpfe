@@ -137,7 +137,7 @@ module.exports.getUserById = (id) => {
 module.exports.allusersforadmin = () => {
 
     return new Promise((resolve, reject) => {
-        User.find({role: "tripper"}).then(data => {
+        User.find().then(data => {
             //  chatx.find({ owner: id }).then(data => {
             if (data !== null) {
                 resolve(data)

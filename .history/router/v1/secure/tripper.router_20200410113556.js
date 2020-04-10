@@ -356,25 +356,13 @@ router.post('/allmessagesbyuser', authenticateToken, (req, res) => {
   });
 })
 
-router.post('/allchatsforadmin', authenticateToken, (req, res) => {
-  
+router.get('/allchatsforadmin', (req, res) => {
+  console.log("hhhhh")
   tripperModule.allchatsforadmin().then((result) => {
     response.json(res, result)
   }).catch((err) => {
     response.badRequest(res, err);
   });
-})
-
-
-router.post('/allusersforadmin', authenticateToken, (req, res) => {
-  userModule.allusersforadmin().then((result) => {
-
-    response.json(res, result)
-  }).catch((err) => {
-      console.log(err)
-      response.badRequest(res, err);
-    });
-
 })
 
 

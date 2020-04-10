@@ -367,7 +367,7 @@ router.post('/allchatsforadmin', authenticateToken, (req, res) => {
 
 
 router.post('/allusersforadmin', authenticateToken, (req, res) => {
-  userModule.allusersforadmin().then((result) => {
+  tripModule.allchatsforadmin().then((result) => {
 
     response.json(res, result)
   }).catch((err) => {

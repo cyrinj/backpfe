@@ -27,12 +27,12 @@ module.exports = (io) => {
                 }
                chat.push(newchat)
             }
-            console.log("**********************************")
+
             console.log("chat",chat)
         });
 
         socket.on('msg', (username, message, id) => {
-            console.log("taw")
+
             objmessage = {}
             for (var i = 0; i < chat.length; i++) {
                 if (chat[i].id == id) {
@@ -43,7 +43,6 @@ module.exports = (io) => {
                     break
                 }
             }
-            console.log("mychat",chat)
             //     io.emit('msg', {message,id})
             io.emit('get', chat)
 

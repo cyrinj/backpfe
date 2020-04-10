@@ -32,7 +32,7 @@ module.exports = (io) => {
         });
 
         socket.on('msg', (username, message, id) => {
-            console.log("taw")
+
             objmessage = {}
             for (var i = 0; i < chat.length; i++) {
                 if (chat[i].id == id) {
