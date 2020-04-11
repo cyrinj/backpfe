@@ -107,7 +107,7 @@ module.exports.deleteoffer = (offer) => {
       resolve(data)
     }).catch(err => reject(err))
   })}
- //admin
+ 
   module.exports.all= () => {
     return new Promise((resolve, reject) => {
       agencyy.find().then(data => {
@@ -121,20 +121,6 @@ module.exports.deleteoffer = (offer) => {
     
   }
 
-
-  //admin : demande by trip
-  module.exports.alldemandesbytrip= (trip) => {
-    return new Promise((resolve, reject) => {
-      agencyy.find({tripid:trip._id}).then(data => {
-        if(data && data.length && data.length > 0) {
-          resolve(data)
-        }else {
-          resolve('no demande de price en charge pour ce trip yet by anyone')
-        }
-      }).catch(err => reject(err))
-    })
-    
-  }
 
     module.exports.getagencyBYid = (id) => {
         return new Promise((resolve, reject) => {

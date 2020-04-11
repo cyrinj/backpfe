@@ -9,7 +9,7 @@ const agencyModule = require('../../../modules/agency.module.js');
  
 
 
-//admin
+
 router.get('/allhostedAgency', (req, res) => {
   // console.log("hhhhhhhh")
   agencyModule.all().then((result) => {
@@ -21,19 +21,6 @@ router.get('/allhostedAgency', (req, res) => {
      });
 
  })
-
- router.post('/allhostedAgencyBytrip', (req, res) => {
-  // console.log("hhhhhhhh")
-  agencyModule.alldemandesbytrip(req.body).then((result) => {
- 
-     response.json(res, result)
-   }).catch((err) => {
-       console.log(err)
-       response.badRequest(res, err);
-     });
-
- })
- 
  
 
 router.post('/makeOFFER', (req, res) => {

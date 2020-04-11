@@ -5,14 +5,15 @@ const response = require('ybha-response');
 const userModule = require('../../../modules/user.module.js');
 const tripperModule = require('../../../modules/tripper.module.js');
 const agencyModule = require('../../../modules/agency.module.js');
+const agencyHostingModule = require('../../../modules/agencyhosting.module.js');
 
  
 
 
-//admin
+
 router.get('/allhostedAgency', (req, res) => {
   // console.log("hhhhhhhh")
-  agencyModule.all().then((result) => {
+  agencyHostingModule.all().then((result) => {
  
      response.json(res, result)
    }).catch((err) => {
@@ -21,19 +22,6 @@ router.get('/allhostedAgency', (req, res) => {
      });
 
  })
-
- router.post('/allhostedAgencyBytrip', (req, res) => {
-  // console.log("hhhhhhhh")
-  agencyModule.alldemandesbytrip(req.body).then((result) => {
- 
-     response.json(res, result)
-   }).catch((err) => {
-       console.log(err)
-       response.badRequest(res, err);
-     });
-
- })
- 
  
 
 router.post('/makeOFFER', (req, res) => {
