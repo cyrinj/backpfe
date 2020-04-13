@@ -139,7 +139,6 @@ module.exports.subform = (tokenid, x) => {
         trip1.confirmedByWantotrip = false
         trip1.propositiondeleted = false
         trip1.month = x.month
-        trip1.status = "on hold"
         console.log(trip1)
 trip1.draft=x.draft
 trip1.date_suggestion=moment().tz("Africa/Tunisia").format()
