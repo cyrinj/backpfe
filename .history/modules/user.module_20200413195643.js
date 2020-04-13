@@ -160,7 +160,7 @@ module.exports.allusersforadmin = () => {
 
 
 
-module.exports.Allusersforadmin1 = () => {
+module.exports.Allusersforadmin = () => {
 
     return new Promise((resolve, reject) => {
         User.find().then(data => {

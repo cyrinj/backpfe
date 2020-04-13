@@ -377,8 +377,8 @@ router.post('/allusersforadmin', authenticateToken, (req, res) => {
 
 })
 
-router.post('/Allusersforadmin1', authenticateToken, (req, res) => {
-  userModule.Allusersforadmin1().then((result) => {
+router.post('/Allusersforadmin', authenticateToken, (req, res) => {
+  userModule.Allusersforadmin().then((result) => {
 
     response.json(res, result)
   }).catch((err) => {

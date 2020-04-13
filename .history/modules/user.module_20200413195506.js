@@ -160,14 +160,13 @@ module.exports.allusersforadmin = () => {
 
 
 
-module.exports.Allusersforadmin1 = () => {
+module.exports.Allusersforadmin = () => {
 
     return new Promise((resolve, reject) => {
         User.find().then(data => {
             //  chatx.find({ owner: id }).then(data => {
             if (data !== null) {
                 resolve(data)
-                console.log("alldata",data)
                 
             }
             else {
