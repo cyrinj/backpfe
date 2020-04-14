@@ -24,13 +24,14 @@ const multer = require('multer');
 var path = require('path')
 
 router.post('/deleteuser', (req, res) => {
-   console.log("req.body : ", req.body)
+   /*
     adminModule.deletinguser(req.body._id).then((result) => {
       response.json(res, result)
     }).catch((err) => {
       response.badRequest(res, err);
-    });
+    });*/
 
+    console.log("hhhhhhhhhhhhhhhhhhhhh")
   })
 
 
