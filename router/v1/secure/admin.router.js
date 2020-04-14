@@ -40,6 +40,8 @@ router.post('/updateBlogger', (req, res) => {
 router.post('/addblogger', (req, res) => {
    console.log("req.body : ",req.body)
     adminModule.addblogger(req.body).then((result) => {
+      console.log("*****************"+result)
+
       response.json(res, result)
     }).catch((err) => {
       response.badRequest(res, err);
