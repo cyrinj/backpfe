@@ -13,6 +13,63 @@ const fs = require('fs');
 var ObjectId = require('mongodb').ObjectID;
 
 
+
+module.exports.getalls = (rol) => {
+
+    return new Promise((resolve, reject) => {
+        User.find({ role : rol} ).then(data => {
+            
+                if(data && data.length && data.length > 0) {
+                resolve(data)
+             
+            }
+            else {
+        
+                reject("no"+rol+"found")
+            }
+        })
+            .catch(err => {
+                console.log(' getting messages du getallrole error ', err)
+                reject(err);
+            })
+
+    })
+}
+
+
+ 
+module.exports.allrequests  = (stat) => {
+
+    return new Promise((resolve, reject) => {
+      
+        trip.find({"status" : stat} ).then(data => {
+            
+                if(data && data.length && data.length > 0) {
+                resolve(data)
+             
+            }
+            else {
+        
+                reject("no new propositions "+stat+" found")
+            }
+        })
+            .catch(err => {
+                console.log(' getting messages du getallrole error ', err)
+                reject(err);
+            })
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
 module.exports.allmessagesbyuser = (id) => {
 
     return new Promise((resolve, reject) => {

@@ -27,7 +27,27 @@ router.post('/allmessagesbyadmin', (req, res) => {
       response.badRequest(res, err);
     });
   })
-  
+  // input role out put users
+  router.post('/getallrole', (req, res) => {
+    console.log('mmmm')
+      adminModule.getalls(req.body.role).then((result) => {
+        response.json(res, result)
+      }).catch((err) => {
+        response.badRequest(res, err);
+      });
+    })
+    //  input: status output propositions 
+    router.post('/getpropositionsbystatus', (req, res) => {
+        adminModule.allrequests(req.body.status).then((result) => {
+          response.json(res, result)
+        }).catch((err) => {
+          response.badRequest(res, err);
+        });
+      })
+      
+    
+
+
 
 
 module.exports = router;
