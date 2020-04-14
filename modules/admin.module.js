@@ -104,6 +104,27 @@ module.exports.deletinguser = (id) => {
 
 }
 
+module.exports.addblogger = (blogger) => {
+
+    return new Promise((resolve, reject) => {
+       
+        let newuser = new User(blogger);
+        newuser.role="blogger"
+        newuser.activated=true 
+      
+        newuser.save(function(err, user) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(user)
+
+            }
+
+        })
+
+        })
+
+}
 
 
 

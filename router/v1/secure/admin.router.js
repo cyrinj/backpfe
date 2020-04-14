@@ -23,6 +23,17 @@ const multer = require('multer');
 
 var path = require('path')
 
+
+router.post('/addblogger', (req, res) => {
+  
+    adminModule.addblogger(req.body).then((result) => {
+      response.json(res, result)
+    }).catch((err) => {
+      response.badRequest(res, err);
+    });
+  })
+
+
 router.post('/deleteuser', (req, res) => {
    console.log("req.body : ", req.body)
     adminModule.deletinguser(req.body._id).then((result) => {
