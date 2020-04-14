@@ -17,7 +17,7 @@ var ObjectId = require('mongodb').ObjectID;
 module.exports.getalls = (rol) => {
 
     return new Promise((resolve, reject) => {
-        User.find({ role : rol} ).then(data => {
+        User.find({ role : rol, activated:true } ).then(data => {
             
                 if(data && data.length && data.length > 0) {
                 resolve(data)
@@ -35,8 +35,6 @@ module.exports.getalls = (rol) => {
 
     })
 }
-
-
  
 module.exports.allrequests  = (stat) => {
 
@@ -60,14 +58,6 @@ module.exports.allrequests  = (stat) => {
 
     })
 }
-
-
-
-
-
-
-
-
 
 
 module.exports.allmessagesbyuser = (id) => {
