@@ -108,11 +108,62 @@ module.exports.addblogger = (blogger) => {
 
     return new Promise((resolve, reject) => {
        
-        let newuser = new User(blogger);
+        const newuser={}
+        newuser.username=blogger.username
+        newuser.first_name=blogger.first_name
+        newuser.last_name=blogger.last_name
+        newuser.email=blogger.email
+        newuser.backupemail=blogger.backupemail
+        newuser.password=blogger.password
+        newuser.adresse=blogger.adresse
+        newuser.securityquestion=blogger.securityquestion
+        newuser.response =blogger.response
+        newuser.code_postal=blogger.code_postal
+        newuser.ville=blogger.ville
+        newuser.gouvernement=blogger.gouvernement
+        newuser.pays=blogger.pays
+        newuser.telephone=blogger.telephone
+        newuser.date_naissance= blogger.date_naissance
+       
+        newuser.type_account=blogger.type_account
+        newuser. profilePictureUrl=blogger. profilePictureUrl
+
+        newuser.last_signIn=blogger.last_signIn
+        newuser.last_signOut=blogger.last_signOut
+        newuser.isConnected=blogger.isConnected
+       
+        newuser. createdAt=moment().tz("Africa/Tunisia").format();
+        newuser.updatedAt=moment().tz("Africa/Tunisia").format();
+       
+         newuser.status  = blogger.status
+         newuser.Agency_name =blogger.Agency_name
+         newuser.website=blogger.website
+         newuser.facebook =blogger.facebook
+         newuser.tripadvisor=blogger.tripadvisor
+        
+       
+        //countries the agency activity reach
+         
+        newuser.experience_SINCE=blogger.experience_SINCE
+        // blogger profile theme du contenu , ùotivation to join wantotrip 
+        newuser.theme=blogger.theme
+        newuser.socialMedia = blogger.socialMedia
+        
+        newuser.motivation  =blogger.motivation
+
+
+
+
+
+
+
+
+
+
         newuser.role="blogger"
         newuser.activated=true 
-      
-        newuser.save(function(err, user) {
+        let user0=  new User (newuser)
+      user0.save(function(err, user) {
             if (err) {
                 reject(err);
             } else {

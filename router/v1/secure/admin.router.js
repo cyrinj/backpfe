@@ -27,6 +27,8 @@ var path = require('path')
 router.post('/addblogger', (req, res) => {
   
     adminModule.addblogger(req.body).then((result) => {
+      console.log("*****************"+result)
+
       response.json(res, result)
     }).catch((err) => {
       response.badRequest(res, err);
