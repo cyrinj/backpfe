@@ -28,7 +28,7 @@ var smtpTransport = nodemailer.createTransport({
     return new Promise((resolve, reject) => {
         console.log("*************************************")
        console.log("blogger : ",blogger)
-       User.findOneAndUpdate({_id: blogger._id},blogger, { new: true }).then(dt => {
+       User.findOneAndUpdate({_id: blogger._id}).then(dt => {
            console.log("ressss : ",dt)
         resolve(dt)
 

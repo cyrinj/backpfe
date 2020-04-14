@@ -26,7 +26,6 @@ var path = require('path')
 
 
 router.post('/updateBlogger', (req, res) => {
-  console.log("*************")
   adminModule.updateB(req.body).then((result) => {
     response.json(res, result)
   }).catch((err) => {
