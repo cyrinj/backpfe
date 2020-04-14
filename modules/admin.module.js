@@ -11,6 +11,15 @@ const U = require('../modules/user.module.js')
 //now is testing u
 const fs = require('fs');
 var ObjectId = require('mongodb').ObjectID;
+var nodemailer = require('nodemailer')
+var smtpTransport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+        user: "rbiiaziz900@gmail.com",
+        //process.env.GMAILPW EXPORT
+        pass: process.env.GMAILPW
+    }
+   });
 
 
 
@@ -81,3 +90,43 @@ module.exports.allmessagesbyuser = (id) => {
 
     })
 }
+
+ 
+ 
+
+module.exports.deletinguser = (id) => {
+
+    return new Promise((resolve, reject) => {
+        User.remove({_id: id}).then(data => {
+            resolve(data)
+          }).catch(err => reject(err))
+        })
+
+}
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
