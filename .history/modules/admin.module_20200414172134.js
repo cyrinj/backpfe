@@ -23,21 +23,6 @@ var smtpTransport = nodemailer.createTransport({
 
 
 
-
-   module.exports.update = (blogger) => {
-    return new Promise((resolve, reject) => {
-       console.log("blogger : ",blogger)
-       User.findOneAndUpdate({_id: blogger._id}).then(dt => {
-          
-        resolve(dt)
-        
-  
-    }) .catch((err) => {
-      reject(err)
-    });
-    })
-  }   
-
 module.exports.getalls = (rol) => {
 
     return new Promise((resolve, reject) => {

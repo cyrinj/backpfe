@@ -24,18 +24,6 @@ const multer = require('multer');
 var path = require('path')
 
 
-
-router.post('/updateBlogger', (req, res) => {
-  adminModule.update(req.body).then((result) => {
-    response.json(res, result)
-  }).catch((err) => {
-      console.log(err)
-      response.badRequest(res, err);
-    });
-})
-
-
-
 router.post('/addblogger', (req, res) => {
    console.log("req.body : ",req.body)
     adminModule.addblogger(req.body).then((result) => {
