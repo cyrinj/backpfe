@@ -173,7 +173,8 @@ module.exports.addblogger = (blogger) => {
         let salt = bcrypt.genSaltSync(10);
         let hash = bcrypt.hashSync(newblogger.password, salt);
         newblogger.password = hash
-
+        console.log("hhhh")
+        // newblogger.status=""
         newblogger.save((err, res) => {
             if (err) reject(err)
             else {

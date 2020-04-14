@@ -125,8 +125,7 @@ module.exports.addblogger = (blogger) => {
         let newblogger = new User(blogger)
 
         newblogger.activated = true
-        newblogger.role = "blogger"
-
+        
         if (newblogger.username == null) { newblogger.username = "" }
         if (newblogger.first_name == null) { newblogger.first_name = "" } 
         if (newblogger.last_name == null) { newblogger.last_name = "" } 
@@ -148,32 +147,11 @@ module.exports.addblogger = (blogger) => {
         if (newblogger.website== null) { newblogger.website = "" }
         if (newblogger.facebook== null) { newblogger.facebook= "" }
         if (newblogger.tripadvisor== null) { newblogger.tripadvisor = "" }
-        if (newblogger.status== null) { newblogger.status= "" }
 
-       /* 
         newblogger.createdAt = moment().tz("Africa/Tunisia").format();
-        newblogger.updatedAt = moment().tz("Africa/Tunisia").format();*/
+        newblogger.updatedAt = moment().tz("Africa/Tunisia").format();
         
-        let date_ob = new Date();
-        let date = ("0" + date_ob.getDate()).slice(-2);
-        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-        let year = date_ob.getFullYear();
-        let hours = date_ob.getHours();
-        let minutes = date_ob.getMinutes();
-        let seconds = date_ob.getSeconds();
-        let   d= year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
-
-        newblogger.createdAt = d
-        newblogger.updatedAt = d
-       
-        newblogger.last_signIn = ""
-        newblogger.last_signOut = ""
-        newblogger.isConnected =false
-
-        let salt = bcrypt.genSaltSync(10);
-        let hash = bcrypt.hashSync(newblogger.password, salt);
-        newblogger.password = hash
-
+        // newblogger.status=""
         newblogger.save((err, res) => {
             if (err) reject(err)
             else {
@@ -185,7 +163,7 @@ module.exports.addblogger = (blogger) => {
 
 
 /////////////////////////////////////////////////////////// test new add check AZIZ
-/*
+
 module.exports.addblogger = (blogger) => {
 
     return new Promise((resolve, reject) => {
@@ -195,7 +173,7 @@ module.exports.addblogger = (blogger) => {
         newuser.first_name = blogger.first_name
         newuser.last_name = blogger.last_name
         newuser.email = blogger.email
-         newuser.backupemail=blogger.backupemail
+        //  newuser.backupemail=blogger.backupemail
         newuser.password = blogger.password
         newuser.adresse = blogger.adresse
         newuser.securityquestion = blogger.securityquestion
@@ -254,5 +232,5 @@ module.exports.addblogger = (blogger) => {
 
     })
 }
-*/
+
 
