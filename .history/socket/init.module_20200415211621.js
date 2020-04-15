@@ -37,8 +37,7 @@ module.exports = (io) => {
                 if (chat[i].id == id) {
                     objmessage.sender = username
                     objmessage.contenu = message
-                    if(message!="")
-                    {chat[i].messages.push(objmessage)}
+                    chat[i].messages.push(objmessage)
 
                     break
                 }
