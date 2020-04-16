@@ -299,7 +299,7 @@ router.post('/editprofile/:id', multeruploadImage.any(),imageUpload, (req, res) 
 function imageUpload(req, res) {
   var filesArray = req.files;
   id = req.params.id
-  mkdirp("./rsc/uploads/" + id , function (err) {
+  mkdirp("./public/" + id , function (err) {
     if (err) response.badRequest(err)
     else {
       async.each(filesArray, function (file, eachcallback) {
@@ -312,9 +312,9 @@ function imageUpload(req, res) {
             });
           },
           function (data, callback) {
-            var writepath = "./rsc/uploads/" + id +"/"
-            let nameFile = file.originalname.replace(' ', '_')
-            var urlBD = "http://localhost:3000/uploads/" + id + "/" + nameFile
+            var writepath = "./public/" + id +"/"
+           let nameFile = id+"_"+Date.now()+path.extname(file.originalname)
+            var urlBD = "http://localhost:3000/public/" + id + "/" + nameFile 
          
             tripperModule.editphoto_de_profil(id, urlBD).then((result) => {
    
